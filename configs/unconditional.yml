@@ -1,0 +1,47 @@
+molecule_dataset:
+   path: ../train
+   
+model:
+    n_layers: 11
+    d_model: 384
+    d_message: 128
+    d_edge: 128
+    n_coord_sets: 64
+    n_attn_heads: 32
+    d_message_hidden: 128
+    coord_norm: length
+    size_emb: 64
+    max_atoms: 256
+    atom_vocab_size: 13
+    charge_vocab_size: 4
+    edge_vocab_size: 5
+    self_conditioning: False
+    remove_com: True
+    protein_conditioning: False
+    max_patoms: 256
+    patom_vocab_size: 6
+    gramian: False
+
+train:
+   device: cuda
+   n_gpus: 1
+   seed: 1234
+   batch_size: 80
+   epochs: 100
+   warm_up_steps: 10000
+   max_gradient_norm: 1.0
+   checkpoint_path: ../cpk
+   model_version: v0
+   type_model: mediumxl
+   path_legacy_model_cpk: None
+   path_legacy_model_opt: None
+   dataset: geom
+
+flow:
+   coord_noise_std: 0.2
+   scale_ot_factor: 0.25645364536453646
+   batch_ot: False
+   max_interp_steps: 1
+   scale_ot: True
+   sample_charges: False
+   symmetric_adj: False
